@@ -97,31 +97,110 @@
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/uploaded-1.jpg');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            min-height: 80vh;
+            position: relative;
+            padding: 120px 0;
+            background-color: #fff;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 50%;
+            height: 120%;
+            background: var(--light-gray);
+            border-radius: 50% 0 0 50%;
+            z-index: 0;
+        }
+
+        .hero-flex {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+        }
+
+        @media (min-width: 992px) {
+            .hero-flex {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .hero-content {
+            flex: 1.2;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .hero-image-box {
+            flex: 0.8;
+            position: relative;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-img-main {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+            transition: transform 0.5s;
+        }
+
+        .hero-img-main:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 20px;
+            left: -20px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: #000;
-            animation: fadeInUp 1s ease-out;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--secondary-color);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+            display: block;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #555;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .btn {
@@ -345,9 +424,26 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
-                <h1>Unlock Your Natural Glow</h1>
-                <p>Premium cosmetics and beauty products curated just for you. Discover the best of makeup and skincare at GLOW NUR.</p>
-                <a href="#categories" class="btn">Explore Collections</a>
+                <div class="hero-flex">
+                    <div class="hero-content">
+                        <h1>Redefining <span>True Beauty</span></h1>
+                        <p>Explore a curated selection of premium cosmetics and makeup essentials designed to celebrate your unique glow.</p>
+                        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <a href="#categories" class="btn">Shop Collection</a>
+                            <a href="#about" class="btn" style="background: white; color: var(--text-color); border: 1px solid #eee;">Our Story</a>
+                        </div>
+                    </div>
+                    <div class="hero-image-box">
+                        <img src="images/uploaded-1.jpg" alt="GLOW NUR Premium Beauty" class="hero-img-main">
+                        <div class="hero-badge">
+                            <span style="font-size: 1.5rem;">✨</span>
+                            <div>
+                                <div style="font-size: 0.8rem; color: #888;">Customer Choice</div>
+                                <div>5.0 Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
