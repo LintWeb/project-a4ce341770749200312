@@ -480,6 +480,24 @@
             color: #888;
         }
 
+        /* Scroll Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delayed reveal for grid items */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -549,21 +567,21 @@
             </div>
         </section>
 
-        <section id="categories">
+        <section id="categories" class="reveal">
             <div class="container">
                 <div class="section-title">
                     <h2>Our Specialities</h2>
                 </div>
                 <div class="grid">
-                    <div class="card">
+                    <div class="card reveal reveal-delay-1">
                         <h3>Makeup Essentials</h3>
                         <p>From luxury foundations to vibrant lipsticks, find everything you need for a flawless look.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal reveal-delay-2">
                         <h3>Skincare Rituals</h3>
                         <p>Advanced formulas to nourish, hydrate, and protect your skin for a healthy radiance.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal reveal-delay-3">
                         <h3>Beauty Accessories</h3>
                         <p>High-quality tools and accessories to perfect your daily beauty routine.</p>
                     </div>
@@ -571,13 +589,13 @@
             </div>
         </section>
 
-        <section id="about" style="background-color: #fff9fb;">
+        <section id="about" style="background-color: #fff9fb;" class="reveal">
             <div class="container">
                 <div class="about-flex">
-                    <div class="about-image">
+                    <div class="about-image reveal reveal-delay-1">
                         <img src="images/uploaded-1.jpg" alt="GLOW NUR Store Display" style="max-width: 100%; height: auto; border-radius: 20px;">
                     </div>
-                    <div class="about-content">
+                    <div class="about-content reveal reveal-delay-2">
                         <h2>Experience Beauty at GLOW NUR</h2>
                         <p style="margin: 20px 0;">Located in the heart of Chattogram, GLOW NUR is your premier destination for high-end cosmetics. We believe that beauty is an expression of self-love, and our curated collection reflects that philosophy.</p>
                         <p>Whether you are looking for the latest makeup trends or a consistent skincare routine, our experts are here to guide you.</p>
@@ -598,23 +616,23 @@
             </div>
         </section>
 
-        <section id="contact" class="contact-info">
+        <section id="contact" class="contact-info reveal">
             <div class="container">
                 <div class="section-title">
                     <h2>Get In Touch</h2>
                 </div>
                 <div class="info-grid">
-                    <div class="info-item">
+                    <div class="info-item reveal reveal-delay-1">
                         <i class="fa-solid fa-location-dot" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 20px;"></i>
                         <h4>Visit Our Store</h4>
                         <p>Kohinur City, 344 মোহাম্মদ আলী সড়ক,<br>Chattogram 4000, Bangladesh</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-item reveal reveal-delay-2">
                         <i class="fa-solid fa-phone" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 20px;"></i>
                         <h4>Call Us</h4>
                         <p>+880 1984-799419</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-item reveal reveal-delay-3">
                         <i class="fa-solid fa-clock" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 20px;"></i>
                         <h4>Opening Hours</h4>
                         <p>Saturday - Thursday: 10:00 AM - 9:00 PM<br>Friday: 3:00 PM - 9:00 PM</p>
@@ -623,7 +641,7 @@
             </div>
         </section>
 
-        <section id="map" class="map-section">
+        <section id="map" class="map-section reveal">
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d24637.641869868017!2d91.7978621!3d22.3581277!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd905373dea85%3A0x9202b5443499d977!2sGLOW%20NUR!5e1!3m2!1sen!2sbd!4v1770749399741!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -686,6 +704,25 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Intersection Observer for In-View Animations
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Once animated, no need to observe again
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            revealObserver.observe(element);
         });
     </script>
 </body>
