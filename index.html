@@ -351,6 +351,24 @@
             color: var(--primary-color);
         }
 
+        /* Map Section */
+        .map-section {
+            padding: 0;
+            line-height: 0;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* Footer */
         footer {
             background-color: var(--secondary-color);
@@ -530,6 +548,12 @@
                         <p>Saturday - Thursday: 10:00 AM - 9:00 PM<br>Friday: 3:00 PM - 9:00 PM</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="map" class="map-section">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d24637.641869868017!2d91.7978621!3d22.3581277!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd905373dea85%3A0x9202b5443499d977!2sGLOW%20NUR!5e1!3m2!1sen!2sbd!4v1770749399741!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
     </main>
