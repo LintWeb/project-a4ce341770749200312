@@ -373,39 +373,111 @@
         footer {
             background-color: var(--secondary-color);
             color: white;
-            padding: 60px 0 30px;
-            text-align: center;
+            padding: 80px 0 40px;
         }
 
-        .footer-logo img {
-            max-height: 80px;
-            margin-bottom: 20px;
-            filter: brightness(0) invert(1);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
-        .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .social-links a {
-            color: white;
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-col p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
             text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
 
-        .social-links a:hover {
+        .footer-col ul li a:hover {
             color: var(--primary-color);
         }
 
-        .copyright {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #999;
-            border-top: 1px solid #444;
-            padding-top: 20px;
+        .footer-logo-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+        }
+
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-socials a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
         }
 
         /* Animations */
@@ -560,18 +632,46 @@
 
     <footer>
         <div class="container">
-            <div class="footer-logo">
-                <img src="images/uploaded-1.jpg" alt="GLOW NUR logo white">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo-box">
+                        <img src="images/uploaded-1.jpg" alt="GLOW NUR logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Gʟᴏᴡ Nᴜʀ</span>
+                    </div>
+                    <p>Your one-stop destination for authentic premium beauty and cosmetics in Chattogram.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Our Specialities</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="#">Makeup Essentials</a></li>
+                        <li><a href="#">Skincare Rituals</a></li>
+                        <li><a href="#">Beauty Tools</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Visit Us</h4>
+                    <p><i class="fa-solid fa-location-dot" style="margin-right: 10px; color: var(--primary-color);"></i> Kohinur City, 344 মোহাম্মদ আলী সড়ক, Chattogram</p>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 10px; color: var(--primary-color);"></i> +880 1984-799419</p>
+                    <p><i class="fa-solid fa-envelope" style="margin-right: 10px; color: var(--primary-color);"></i> info@glownur.com</p>
+                </div>
             </div>
-            <p>Your one-stop destination for authentic beauty products in Chattogram.</p>
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="copyright">
-                <p>&copy; <span id="currentYear"></span> GLOW NUR. All Rights Reserved.</p>
-                <p style="font-size: 0.75rem; margin-top: 10px;">Created with passion for beauty.</p>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> GLOW NUR. All Rights Reserved. | <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
